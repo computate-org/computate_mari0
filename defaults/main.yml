@@ -1,0 +1,15 @@
+---
+APP_NAME: mari0
+APP_DEPENDENCIES:
+  - love
+APP_USER: "{{ lookup('env', 'USER') }}"
+APP_GROUP: "{{ APP_USER }}"
+APP_SRC: "/usr/local/src/{{ APP_NAME  }}"
+
+##################
+# Nico's Program #
+##################
+
+APP_REPO: git@github.com:computate/mari0.git
+APP_TAG: tate
+

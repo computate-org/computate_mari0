@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Mari0
+Comment=Mari0
+Icon={{ APP_SRC }}/graphics/icon.png
+Exec=love {{ APP_SRC }}
+Terminal=false
+Categories=Game;
+
