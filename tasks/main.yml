@@ -4,21 +4,22 @@
     name: "@Development Tools"
     state: present
   become: true
-- name: "install epel-release dependency"
-  package:
-    name: epel-release
-    state: present
-  become: true
+  vars:
+    ansible_python_interpreter: "{{ APP_PYTHON }}"
 - name: "install Power Tools dependency"
   package:
     name: dnf-plugins-core
     state: present
   become: true
+  vars:
+    ansible_python_interpreter: "{{ APP_PYTHON }}"
 - name: "install {{ APP_NAME }} dependencies"
   package:
     name: "{{ APP_DEPENDENCIES }}"
     state: present
   become: true
+  vars:
+    ansible_python_interpreter: "{{ APP_PYTHON }}"
 - name: Create the directory {{ APP_SRC }}
   file:
     name: "{{ APP_SRC }}"
