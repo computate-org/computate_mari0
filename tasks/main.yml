@@ -1,32 +1,18 @@
 ---
-- name: "install Development Tools dependency"
-  package:
-    name: "@Development Tools"
-    state: present
-  become: true
-  vars:
-    ansible_python_interpreter: "{{ APP_PYTHON }}"
-- name: "install Power Tools dependency"
-  package:
-    name: dnf-plugins-core
-    state: present
-  become: true
-  vars:
-    ansible_python_interpreter: "{{ APP_PYTHON }}"
-- name: "install {{ APP_NAME }} dependencies"
-  package:
-    name: "{{ APP_DEPENDENCIES }}"
-    state: present
-  become: true
-  vars:
-    ansible_python_interpreter: "{{ APP_PYTHON }}"
+- name: "Install powertools dependencies: dnf-plugins-core"
+  shell: "pkcon install -y dnf-plugins-core"
+  ignore_errors: true
+- name: "Enable powertools repo"
+  shell: "pkcon repo-enable powertools"
+  ignore_errors: true
+- name: "Install dependencies: {{ APP_DEPENDENCIES | join(' ') }}"
+  shell: "pkcon install -y {{ item }}"
+  loop: "{{ APP_DEPENDENCIES }}"
+  ignore_errors: true
 - name: Create the directory {{ APP_SRC }}
   file:
     name: "{{ APP_SRC }}"
     state: directory
-    owner: "{{ APP_USER }}"
-    group: "{{ APP_GROUP }}"
-  become: yes
 - name: Check for the {{ APP_NAME }} README file
   stat:
     path: "{{ APP_SRC }}/README.md"
@@ -37,9 +23,9 @@
     dest: "{{ APP_SRC }}"
     version: "{{ APP_TAG }}"
   when: not APP_README_PATH.stat.exists
-- name: Create the launcher /usr/share/applications/{{ APP_NAME }}.desktop
+- name: "Create the launcher {{ APP_DESKTOP }}"
   template:
     src: app.desktop
-    dest: "/usr/share/applications/{{ APP_NAME }}.desktop"
-  become: true
+    dest: "{{ APP_DESKTOP }}"
+    mode: 0775
 

@@ -4,8 +4,8 @@ APP_NAME: mari0
 APP_DEPENDENCIES:
   - love
 APP_USER: "{{ lookup('env', 'USER') }}"
-APP_GROUP: "{{ APP_USER }}"
-APP_SRC: "/usr/local/src/{{ APP_NAME  }}"
+APP_SRC: "{{ lookup('env', 'HOME') }}/.local/src/{{ APP_NAME  }}"
 APP_REPO: git@github.com:Stabyourself/mari0.git
 APP_TAG: 1.6.2
+APP_DESKTOP: "{{ lookup('env', 'HOME') }}/.local/share/applications/{{ APP_NAME }}.desktop"
 

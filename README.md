@@ -12,9 +12,9 @@ git clone git@github.com:computate-org/computate_mari0.git ~/.ansible/roles/comp
 cd ~/.ansible/roles/computate.computate_mari0
 ```
 
-# Run the mari0 ansible playbook to install mari0 locally (requires sudo privileges with -K). 
+# Run the mari0 ansible playbook to install mari0 locally. 
 
 ```bash
-ansible-playbook -K install.yml
+ansible-playbook install.yml
 ```
 
