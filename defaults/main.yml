@@ -1,11 +1,13 @@
 ---
 APP_PYTHON: "{{ '/usr/bin/python' if lookup('file', '/usr/bin/python', errors='ignore') else '/usr/bin/python3' }}"
-APP_NAME: mari0
-APP_DEPENDENCIES:
+APP_DEPENDENCIES_REDHAT:
   - love
+APP_DEPENDENCIES: "{{ APP_DEPENDENCIES_REDHAT if ansible_distribution_file_variety == 'RedHat' else APP_DEPENDENCIES_REDHAT }}"
+APP_NAME: mari0
 APP_USER: "{{ lookup('env', 'USER') }}"
 APP_SRC: "{{ lookup('env', 'HOME') }}/.local/src/{{ APP_NAME  }}"
 APP_REPO: git@github.com:Stabyourself/mari0.git
 APP_TAG: 1.6.2
-APP_DESKTOP: "{{ lookup('env', 'HOME') }}/.local/share/applications/{{ APP_NAME }}.desktop"
+APP_PREFIX: "/home/{{ APP_USER }}/.local"
+APP_DESKTOP: "{{ APP_PREFIX }}/share/applications/{{ APP_NAME }}.desktop"
 
