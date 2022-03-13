@@ -5,9 +5,9 @@ APP_DEPENDENCIES_REDHAT:
 APP_DEPENDENCIES: "{{ APP_DEPENDENCIES_REDHAT if ansible_distribution_file_variety == 'RedHat' else APP_DEPENDENCIES_REDHAT }}"
 APP_NAME: mari0
 APP_USER: "{{ lookup('env', 'USER') }}"
-APP_SRC: "{{ lookup('env', 'HOME') }}/.local/src/{{ APP_NAME  }}"
+APP_PREFIX: "/home/{{ APP_USER }}/.local"
+APP_SRC: "{{ APP_PREFIX }}/src/{{ APP_NAME  }}"
 APP_REPO: git@github.com:Stabyourself/mari0.git
 APP_TAG: 1.6.2
-APP_PREFIX: "/home/{{ APP_USER }}/.local"
 APP_DESKTOP: "{{ APP_PREFIX }}/share/applications/{{ APP_NAME }}.desktop"
 
