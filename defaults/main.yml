@@ -7,7 +7,8 @@ APP_NAME: mari0
 APP_USER: "{{ lookup('env', 'USER') }}"
 APP_PREFIX: "/home/{{ APP_USER }}/.local"
 APP_SRC: "{{ APP_PREFIX }}/src/{{ APP_NAME  }}"
-APP_REPO: git@github.com:Stabyourself/mari0.git
+APP_REPO_SSH: git@github.com:Stabyourself/mari0.git
+APP_REPO_HTTPS: "{{ APP_REPO | replace('git@github.com:', 'https://github.com/') }}"
 APP_TAG: 1.6.2
 APP_DESKTOP: "{{ APP_PREFIX }}/share/applications/{{ APP_NAME }}.desktop"
 
