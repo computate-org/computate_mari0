@@ -23,6 +23,8 @@
   file:
     name: "{{ APP_SRC }}"
     state: directory
+    owner: "{{ APP_USER }}"
+  become: "{{ APP_ROOT }}"
 - name: Check for the {{ APP_NAME }} README file
   stat:
     path: "{{ APP_SRC }}/README.md"
@@ -46,4 +48,4 @@
     src: app.desktop
     dest: "{{ APP_DESKTOP }}"
     mode: 0775
-
+  become: "{{ APP_ROOT }}"
