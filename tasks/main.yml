@@ -1,4 +1,6 @@
 ---
+- include_role:
+    name: computate.computate_love
 - name: "Install repo dependencies as root: {{ REPO_DEPENDENCIES | join(' ') }}"
   package:
     name: "{{ REPO_DEPENDENCIES }}"
