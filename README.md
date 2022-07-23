@@ -1,4 +1,8 @@
 
+# Install the prerequisite program Löve
+
+https://github.com/computate-org/computate_love
+
 # Install the mari0 ansible role
 
 ```bash

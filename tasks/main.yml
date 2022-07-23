@@ -1,26 +1,6 @@
 ---
 - include_role:
     name: computate.computate_love
-- name: "Install repo dependencies as root: {{ REPO_DEPENDENCIES | join(' ') }}"
-  package:
-    name: "{{ REPO_DEPENDENCIES }}"
-  become: true
-  register: INSTALL_REPO_DEPENDENCIES
-  ignore_errors: true
-- name: "Install repo dependencies as user {{ APP_USER }}: {{ REPO_DEPENDENCIES | join(' ') }}"
-  shell: "pkcon install -y {{ item }} | true"
-  loop: "{{ REPO_DEPENDENCIES }}"
-  when: INSTALL_REPO_DEPENDENCIES.failed
-- name: "Install dependencies as root: {{ APP_DEPENDENCIES | join(' ') }}"
-  package:
-    name: "{{ APP_DEPENDENCIES }}"
-  become: true
-  register: INSTALL_DEPENDENCIES
-  ignore_errors: true
-- name: "Install dependencies as user {{ APP_USER }}: {{ APP_DEPENDENCIES | join(' ') }}"
-  shell: "pkcon install -y {{ item }} | true"
-  loop: "{{ APP_DEPENDENCIES }}"
-  when: INSTALL_DEPENDENCIES.failed
 - name: Create the directory {{ APP_SRC }}
   file:
     name: "{{ APP_SRC }}"
