@@ -2,6 +2,8 @@
 # Install the prerequisite program Löve
 
 https://github.com/computate-org/computate_love
+https://github.com/computate-org/computate_physfs
+https://github.com/computate-org/computate_luajit
 
 # Install the mari0 ansible role
 
