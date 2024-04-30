@@ -1,6 +1,4 @@
 ---
-- include_role:
-    name: computate.computate_love
 - name: Create the directory {{ APP_SRC }}
   file:
     name: "{{ APP_SRC }}"
